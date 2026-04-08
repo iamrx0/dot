@@ -22,8 +22,8 @@ return {
 
         vim.keymap.set("n", "<c-f>", "<cmd>lua require('fzf-lua').files()<CR>",
             { silent = true, desc = "Fuzzy Files" })
-        vim.keymap.set("n", "<c-m>", "<cmd>lua require('fzf-lua').marks()<CR>",
-            { silent = true, desc = "Fuzzy Marks" })
+        -- vim.keymap.set("n", "<c-m>", "<cmd>lua require('fzf-lua').marks()<CR>",
+        --     { silent = true, desc = "Fuzzy Marks" })
 
         vim.keymap.set("n", "<leader><space>", "<cmd>lua require('fzf-lua').buffers()<CR>",
             { silent = true, desc = "Fuzzy Buffers" })

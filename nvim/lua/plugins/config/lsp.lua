@@ -2,6 +2,10 @@ return {
     'williamboman/mason.nvim',
     config = function()
         require("mason").setup({
+            registries = {
+                "github:mason-org/mason-registry",
+                "github:Crashdummyy/mason-registry",
+            },
             ui = {
                 border = "single",
                 width = 0.7,
@@ -53,20 +57,19 @@ return {
         })
 
         vim.lsp.enable({
+            "roslyn",
             "luals",
             "docker_compose",
             "dockerls",
             "cmake-language-server",
             "gopls",
             "clangd",
-            "nimlsp",
-            "zls",
             "jdtls",
             "jsonlsp",
             "pylsp",
             "yamlls",
             "html",
-            "tsls"
+            "tsls",
         })
 
         vim.diagnostic.config({

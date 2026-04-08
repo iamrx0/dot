@@ -3,7 +3,11 @@ return {
     lazy = false,
     dependencies = {
         {
-            'L3MON4D3/LuaSnip', version = 'v2.*'
+            'L3MON4D3/LuaSnip',
+            version = 'v2.*',
+            dependencies = {
+                { "rafamadriz/friendly-snippets" }
+            }
         },
         {
             "fang2hou/blink-copilot",
@@ -16,6 +20,7 @@ return {
     },
     version = '*',
     config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
         require("blink.cmp").setup({
             sources = {
                 default = { "lazydev", "lsp", "path", "snippets", "buffer", "copilot" },
