@@ -14,6 +14,7 @@ vim.pack.add({
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
+    once = true,
     callback = function()
         vim.pack.add({
             { src = "https://github.com/OXY2DEV/markview.nvim" },
@@ -23,6 +24,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+    once = true,
     callback = function()
         vim.pack.add({
             { src = "https://github.com/zbirenbaum/copilot.lua" },
@@ -32,6 +34,7 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufRead" }, {
+    once = true,
     pattern = "*.env*",
     callback = function()
         vim.pack.add({

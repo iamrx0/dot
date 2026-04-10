@@ -8,8 +8,8 @@ return {
             plugins = {
                 rope_autoimport = { enabled = false },
                 ruff = {
-                    enabled = true, -- Enable the plugin
-                    formatEnabled = true, -- Enable formatting using ruffs formatter
+                    enabled = true,
+                    formatEnabled = true,
                     executable = "ruff",
                 },
                 pycodestyle = {

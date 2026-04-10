@@ -1,8 +1,4 @@
 require("mason").setup({
-    registries = {
-        "github:mason-org/mason-registry",
-        "github:Crashdummyy/mason-registry",
-    },
     ui = {
         border = "single",
         width = 0.7,
@@ -10,39 +6,27 @@ require("mason").setup({
     },
 })
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
     callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if not client then return end
-        if client.server_capabilities.signatureHelpProvider then
-            local custom_signature = function()
-                local signature_opts = {
+        vim.api.nvim_buf_set_keymap(args.buf, 'i', '<C-h>', '', {
+            noremap = true,
+            silent = true,
+            callback = function()
+                vim.lsp.buf.signature_help({
                     max_width = 80,
                     max_height = 40,
-                }
-                vim.lsp.buf.signature_help(signature_opts)
-            end
-            vim.api.nvim_buf_set_keymap(args.buf, 'i', '<C-h>', '', {
-                noremap = true,
-                silent = true,
-                callback = custom_signature,
-            })
-        end
-
-        if client.server_capabilities.hoverProvider then
-            local custom_hover = function()
-                local hover_opts = {
+                })
+            end,
+        })
+        vim.api.nvim_buf_set_keymap(args.buf, 'n', 'K', '', {
+            noremap = true,
+            silent = true,
+            callback = function()
+                vim.lsp.buf.hover({
                     max_width = 60,
                     max_height = 10,
-                }
-                vim.lsp.buf.hover(hover_opts)
-            end
-            vim.api.nvim_buf_set_keymap(args.buf, 'n', 'K', '', {
-                noremap = true,
-                silent = true,
-                callback = custom_hover,
-            })
-        end
+                })
+            end,
+        })
         vim.keymap.set("n", "gn", function() vim.lsp.buf.rename() end,
             { silent = true, desc = "LSP Rename" })
         vim.keymap.set("n", "gC", function() vim.lsp.buf.code_action() end,
