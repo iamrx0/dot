@@ -20,3 +20,4 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.g.loaded_matchparen = false
 vim.opt.splitright = true
+vim.opt.laststatus = 3
