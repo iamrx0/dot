@@ -1,5 +1,4 @@
-local fzf = require('fzf-lua')
-fzf.setup({
+require('fzf-lua').setup({
     winopts = {
         border = "single",
         preview = {
@@ -10,7 +9,7 @@ fzf.setup({
         }
     },
 })
-fzf.register_ui_select()
+require('fzf-lua').register_ui_select()
 
 local config = require("fzf-lua.config")
 local actions = require("trouble.sources.fzf").actions

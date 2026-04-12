@@ -28,12 +28,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
             end,
         })
         vim.keymap.set("n", "gn", function() vim.lsp.buf.rename() end,
-            { silent = true, desc = "LSP Rename" })
+            { silent = true })
         vim.keymap.set("n", "gC", function() vim.lsp.buf.code_action() end,
-            { silent = true, desc = "LSP Code Actions" })
+            { silent = true })
         vim.keymap.set("n", "gf", function()
             vim.lsp.buf.format()
-        end, { silent = true, desc = "LSP Format" })
+        end, { silent = true })
     end,
 })
 

@@ -1,4 +1,9 @@
 require("luasnip.loaders.from_vscode").lazy_load()
+require("lspkind").init({
+  symbol_map = {
+    Copilot = "",
+  },
+})
 require("blink.cmp").setup({
     fuzzy = {
         implementation = "lua",
@@ -14,69 +19,24 @@ require("blink.cmp").setup({
             },
         },
     },
-    appearance = {
-        kind_icons = {
-            Text = '󰉿',
-            Method = '󰊕',
-            Function = '󰊕',
-            Constructor = '󰒓',
-
-            Field = '󰜢',
-            Variable = '󰆦',
-            Property = '󰖷',
-
-            Class = '󱡠',
-            Interface = '󱡠',
-            Struct = '󱡠',
-            Module = '󰅩',
-
-            Unit = '󰪚',
-            Value = '󰦨',
-            Enum = '󰦨',
-            EnumMember = '󰦨',
-
-            Keyword = '󰻾',
-            Constant = '󰏿',
-
-            Snippet = '󱄽',
-            Color = '󰏘',
-            File = '󰈔',
-            Reference = '󰬲',
-            Folder = '󰉋',
-            Event = '󱐋',
-            Operator = '󰪚',
-            TypeParameter = '󰬛',
-        },
-    },
     completion = {
         list = { selection = { preselect = true, auto_insert = false } },
         menu = {
-            scrollbar = false,
-            border = {
-                "┌",
-                "─",
-                "┐",
-                "│",
-                "┘",
-                "─",
-                "└",
-                "│",
+            draw = {
+                components = {
+                    kind_icon = {
+                        text = function (ctx)
+                            return require('lspkind').symbol_map[ctx.kind] or ''
+                        end,
+                    },
+                },
             },
+            scrollbar = false,
         },
         documentation = {
             auto_show = false,
-            window = {
-                border = {
-                    "┌",
-                    "─",
-                    "┐",
-                    "│",
-                    "┘",
-                    "─",
-                    "└",
-                    "│",
-                },
-            },
         },
     },
 })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#ffffff", bg = "NONE" })
+vim.api.nvim_set_hl(0, "BlinkCmpDocBorder",  { fg = "#ffffff", bg = "NONE" })
