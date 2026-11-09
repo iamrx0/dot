@@ -51,7 +51,7 @@ local function set_mode_highlight()
 
     vim.api.nvim_set_hl(0, "StatusMode", {
         fg = mode.fg,
-        bg = colors.bg,
+        bg = "NONE",
         bold = true,
     })
 end
@@ -73,12 +73,52 @@ end
 
 vim.o.statusline = "%!v:lua.my_statusline()"
 
-vim.api.nvim_set_hl(0, "StatusErr", { fg = colors.red, bg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusWarn", { fg = colors.yellow, bg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusDiag", { fg = colors.fg, bg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusFile", { fg = colors.fg, bg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusPos", { fg = colors.blue, bg = "NONE" })
-vim.api.nvim_set_hl(0, "StatusModified", { fg = colors.red, bg = "NONE" })
+vim.api.nvim_set_hl(0, "StatusLine", {
+    fg = colors.fg,
+    bg = "NONE",
+})
+
+vim.api.nvim_set_hl(0, "StatusLineNC", {
+    fg = colors.fg,
+    bg = "NONE",
+})
+
+vim.api.nvim_set_hl(0, "StatusMode", {
+    fg = colors.blue,
+    bg = "NONE",
+    bold = true,
+})
+
+vim.api.nvim_set_hl(0, "StatusErr", {
+    fg = colors.red,
+    bg = "NONE",
+})
+
+vim.api.nvim_set_hl(0, "StatusWarn", {
+    fg = colors.yellow,
+    bg = "NONE",
+})
+
+vim.api.nvim_set_hl(0, "StatusDiag", {
+    fg = colors.fg,
+    bg = "NONE",
+})
+
+vim.api.nvim_set_hl(0, "StatusFile", {
+    fg = colors.fg,
+    bg = "NONE",
+})
+
+vim.api.nvim_set_hl(0, "StatusPos", {
+    fg = colors.blue,
+    bg = "NONE",
+})
+
+vim.api.nvim_set_hl(0, "StatusModified", {
+    fg = colors.red,
+    bg = "NONE",
+})
+
 
 vim.api.nvim_create_autocmd("ModeChanged", {
     callback = function()

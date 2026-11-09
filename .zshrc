@@ -1,7 +1,7 @@
 eval "$(starship init zsh)"
 setopt IGNORE_EOF
-source /home/amer/source/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/amer/source/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /Users/amerm/source/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/amerm/source/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^j' autosuggest-execute
 bindkey '^ ' autosuggest-accept
 bindkey -s '^H' 'fg\n'
@@ -35,11 +35,12 @@ alias cd="z"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(fzf --zsh)"
+
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-eval "$(register-python-argcomplete pipx)"
-source <(ng completion script)
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+
 export PATH=$PATH:$HOME/go/bin
 
 if [ -d "$HOME/bin" ] ; then
@@ -53,4 +54,4 @@ export PATH=$PATH:/usr/local/go/bin
 
 if [ "$TMUX" = "" ]; then tmux; fi
 export PATH=$PATH:$HOME/.local/bin
-export PATH="$PATH:/home/amer/.dotnet/tools"
+export PATH="$PATH:/Users/amerm/.dotnet/tools"
